@@ -1,0 +1,468 @@
+<?xml version="1.0" ?>
+<robot
+  name="holonomic_platform">
+  <link
+    name="mobile_base_link">
+    <inertial>
+      <origin
+        xyz="-5.19284873262009E-17 3.21989943496111E-17 0.0576517097206085"
+        rpy="0 0 0" />
+      <mass
+        value="11.2240470760814" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ocs2_robotic_assets/resources/mobile_manipulator/kortex/meshes/mobile_base_link.dae" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.250980392156863 0.250980392156863 0.250980392156863 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ocs2_robotic_assets/resources/mobile_manipulator/kortex/meshes/mobile_base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="front_left_turning_link">
+    <inertial>
+      <origin
+        xyz="0 0 2.77555756156289E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.785398163397449" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ocs2_robotic_assets/resources/mobile_manipulator/kortex/meshes/turning_joint_visual.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ocs2_robotic_assets/resources/mobile_manipulator/kortex/meshes/turning_joint_visual.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="front_left_turning_joint"
+    type="continuous">
+    <origin
+      xyz="0.1325 -0.13 0.13539"
+      rpy="1.5707963267949 0 0" />
+    <parent
+      link="mobile_base_link" />
+    <child
+      link="front_left_turning_link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="front_left_caster_link">
+    <inertial>
+      <origin
+        xyz="0 0 -2.77555756156289E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.154217119011052" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ocs2_robotic_assets/resources/mobile_manipulator/kortex/meshes/caster_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 0  1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ocs2_robotic_assets/resources/mobile_manipulator/kortex/meshes/caster_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="front_left_caster_joint"
+    type="continuous">
+    <origin
+      xyz="0.005 -0.08 0.0171140798040203"
+      rpy="0 0 0" />
+    <parent
+      link="front_left_turning_link" />
+    <child
+      link="front_left_caster_link" />
+    <axis
+      xyz="-1 0 0" />
+  </joint>
+  <link
+    name="front_right_turning_link">
+    <inertial>
+      <origin
+        xyz="0 0 2.77555756156289E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.785398163397449" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ocs2_robotic_assets/resources/mobile_manipulator/kortex/meshes/turning_joint_visual.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ocs2_robotic_assets/resources/mobile_manipulator/kortex/meshes/turning_joint_visual.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="front_right_turning_link"
+    type="continuous">
+    <origin
+      xyz="-0.1325 -0.13 0.13539"
+      rpy="1.5707963267949 0 0" />
+    <parent
+      link="mobile_base_link" />
+    <child
+      link="front_right_turning_link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="front_right_caster_link">
+    <inertial>
+      <origin
+        xyz="2.77555756156289E-17 0 -2.77555756156289E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.154217119011052" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ocs2_robotic_assets/resources/mobile_manipulator/kortex/meshes/caster_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 0  1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ocs2_robotic_assets/resources/mobile_manipulator/kortex/meshes/caster_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="front_right_caster_joint"
+    type="continuous">
+    <origin
+      xyz="-0.00500000000000003 -0.08 0.0171140798040204"
+      rpy="0 0 0" />
+    <parent
+      link="front_right_turning_link" />
+    <child
+      link="front_right_caster_link" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+  <link
+    name="back_left_turning_link">
+    <inertial>
+      <origin
+        xyz="0 0 -2.77555756156289E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.785398163397449" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ocs2_robotic_assets/resources/mobile_manipulator/kortex/meshes/turning_joint_visual.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ocs2_robotic_assets/resources/mobile_manipulator/kortex/meshes/turning_joint_visual.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="back_left_turning_joint"
+    type="continuous">
+    <origin
+      xyz="0.1325 0.13 0.13539"
+      rpy="1.5707963267949 0 0" />
+    <parent
+      link="mobile_base_link" />
+    <child
+      link="back_left_turning_link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="back_left_caster_link">
+    <inertial>
+      <origin
+        xyz="0 -6.93889390390723E-18 2.77555756156289E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.154217119011052" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ocs2_robotic_assets/resources/mobile_manipulator/kortex/meshes/caster_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 0  1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ocs2_robotic_assets/resources/mobile_manipulator/kortex/meshes/caster_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="back_left_caster_joint"
+    type="continuous">
+    <origin
+      xyz="0.005 -0.08 -0.0171140798040203"
+      rpy="0 0 0" />
+    <parent
+      link="back_left_turning_link" />
+    <child
+      link="back_left_caster_link" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+  <link
+    name="back_right_turning_link">
+    <inertial>
+      <origin
+        xyz="0 0 -2.77555756156289E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.785398163397449" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ocs2_robotic_assets/resources/mobile_manipulator/kortex/meshes/turning_joint_visual.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ocs2_robotic_assets/resources/mobile_manipulator/kortex/meshes/turning_joint_visual.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="back_right_turning_joint"
+    type="continuous">
+    <origin
+      xyz="-0.1325 0.13 0.13539"
+      rpy="1.5707963267949 0 0" />
+    <parent
+      link="mobile_base_link" />
+    <child
+      link="back_right_turning_link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="back_right_caster_link">
+    <inertial>
+      <origin
+        xyz="0 -6.93889390390723E-18 2.77555756156289E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.154217119011052" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ocs2_robotic_assets/resources/mobile_manipulator/kortex/meshes/caster_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 0  1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ocs2_robotic_assets/resources/mobile_manipulator/kortex/meshes/caster_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="back_right_caster_joint"
+    type="continuous">
+    <origin
+      xyz="-0.005 -0.08 -0.0171140798040203"
+      rpy="0 0 0" />
+    <parent
+      link="back_right_turning_link" />
+    <child
+      link="back_right_caster_link" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+</robot>
