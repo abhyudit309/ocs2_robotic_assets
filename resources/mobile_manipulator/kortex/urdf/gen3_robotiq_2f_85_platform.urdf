@@ -4,6 +4,13 @@
 <!-- |    EDITING THIS FILE BY HAND IS NOT RECOMMENDED                                 | -->
 <!-- =================================================================================== -->
 <robot name="gen3_robotiq_2f_85_platform">
+  <!-- Root link -->
+  <link name="root"/>
+  <joint name="root_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="root"/>
+    <child link="mobile_base_link"/>
+  </joint>
   <!-- Mobile Base -->
   <link
     name="mobile_base_link">
@@ -86,8 +93,8 @@
     </collision>
   </link>
   <joint
-    name="front_left_turning_joint"
-    type="fixed">
+    name="base_joint_1"
+    type="revolute">
     <origin
       xyz="0.1325 -0.13 0.13539"
       rpy="1.5707963267949 0 0" />
@@ -140,8 +147,8 @@
     </collision>
   </link>
   <joint
-    name="front_left_caster_joint"
-    type="fixed">
+    name="base_joint_2"
+    type="revolute">
     <origin
       xyz="0.005 -0.08 0.0171140798040203"
       rpy="0 0 0" />
@@ -194,8 +201,8 @@
     </collision>
   </link>
   <joint
-    name="front_right_turning_link"
-    type="fixed">
+    name="base_joint_3"
+    type="revolute">
     <origin
       xyz="-0.1325 -0.13 0.13539"
       rpy="1.5707963267949 0 0" />
@@ -248,8 +255,8 @@
     </collision>
   </link>
   <joint
-    name="front_right_caster_joint"
-    type="fixed">
+    name="base_joint_4"
+    type="revolute">
     <origin
       xyz="-0.00500000000000003 -0.08 0.0171140798040204"
       rpy="0 0 0" />
@@ -302,8 +309,8 @@
     </collision>
   </link>
   <joint
-    name="back_left_turning_joint"
-    type="fixed">
+    name="base_joint_5"
+    type="revolute">
     <origin
       xyz="0.1325 0.13 0.13539"
       rpy="1.5707963267949 0 0" />
@@ -356,8 +363,8 @@
     </collision>
   </link>
   <joint
-    name="back_left_caster_joint"
-    type="fixed">
+    name="base_joint_6"
+    type="revolute">
     <origin
       xyz="0.005 -0.08 -0.0171140798040203"
       rpy="0 0 0" />
@@ -410,8 +417,8 @@
     </collision>
   </link>
   <joint
-    name="back_right_turning_joint"
-    type="fixed">
+    name="base_joint_7"
+    type="revolute">
     <origin
       xyz="-0.1325 0.13 0.13539"
       rpy="1.5707963267949 0 0" />
@@ -464,8 +471,8 @@
     </collision>
   </link>
   <joint
-    name="back_right_caster_joint"
-    type="fixed">
+    name="base_joint_8"
+    type="revolute">
     <origin
       xyz="-0.005 -0.08 -0.0171140798040203"
       rpy="0 0 0" />
@@ -478,13 +485,27 @@
     <limit effort="1000" velocity="5.0" lower="-300" upper="300"/>
   </joint>
   <!-- Attach base to arm -->
-  <joint name="base_to_arm_joint" type="fixed">
+  <link name="attachment"/>
+  <joint name="base_to_attachment_joint" type="fixed">
     <!-- NOTE: in reality x is reversed for kinova arm, hence non-zero rpy -->
+    <origin rpy="0 0 3.14159" xyz="0 0 0.335"/>
+    <parent link="mobile_base_link"/>
+    <child link="attachment"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+  <joint name="attachment_to_arm_joint" type="fixed">
+    <!-- NOTE: in reality x is reversed for kinova arm, hence non-zero rpy -->
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="attachment"/>
+    <child link="base_link"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+  <!-- <joint name="base_to_arm_joint" type="fixed">
     <origin rpy="0 0 3.14159" xyz="0 0 0.335"/>
     <parent link="mobile_base_link"/>
     <child link="base_link"/>
     <axis xyz="0 0 1"/>
-  </joint>
+  </joint> -->
   <!-- Robot arm -->
   <link name="base_link">
     <inertial>
@@ -530,7 +551,7 @@
       </geometry>
     </collision>
   </link>
-  <joint name="joint_1" type="revolute">
+  <joint name="arm_joint_1" type="revolute">
     <origin rpy="3.1416 2.7629E-18 -4.9305E-36" xyz="0 0 0.15643"/>
     <parent link="base_link"/>
     <child link="shoulder_link"/>
@@ -559,7 +580,7 @@
       </geometry>
     </collision>
   </link>
-  <joint name="joint_2" type="revolute">
+  <joint name="arm_joint_2" type="revolute">
     <origin rpy="1.5708 2.1343E-17 -1.1102E-16" xyz="0 0.005375 -0.12838"/>
     <parent link="shoulder_link"/>
     <child link="half_arm_1_link"/>
@@ -588,7 +609,7 @@
       </geometry>
     </collision>
   </link>
-  <joint name="joint_3" type="revolute">
+  <joint name="arm_joint_3" type="revolute">
     <origin rpy="-1.5708 1.2326E-32 -2.9122E-16" xyz="0 -0.21038 -0.006375"/>
     <parent link="half_arm_1_link"/>
     <child link="half_arm_2_link"/>
@@ -617,7 +638,7 @@
       </geometry>
     </collision>
   </link>
-  <joint name="joint_4" type="revolute">
+  <joint name="arm_joint_4" type="revolute">
     <origin rpy="1.5708 -6.6954E-17 -1.6653E-16" xyz="0 0.006375 -0.21038"/>
     <parent link="half_arm_2_link"/>
     <child link="forearm_link"/>
@@ -646,7 +667,7 @@
       </geometry>
     </collision>
   </link>
-  <joint name="joint_5" type="revolute">
+  <joint name="arm_joint_5" type="revolute">
     <origin rpy="-1.5708 2.2204E-16 -6.373E-17" xyz="0 -0.20843 -0.006375"/>
     <parent link="forearm_link"/>
     <child link="spherical_wrist_1_link"/>
@@ -675,7 +696,7 @@
       </geometry>
     </collision>
   </link>
-  <joint name="joint_6" type="revolute">
+  <joint name="arm_joint_6" type="revolute">
     <origin rpy="1.5708 9.2076E-28 -8.2157E-15" xyz="0 0.00017505 -0.10593"/>
     <parent link="spherical_wrist_1_link"/>
     <child link="spherical_wrist_2_link"/>
@@ -704,7 +725,7 @@
       </geometry>
     </collision>
   </link>
-  <joint name="joint_7" type="revolute">
+  <joint name="arm_joint_7" type="revolute">
     <origin rpy="-1.5708 -5.5511E-17 9.6396E-17" xyz="0 -0.10593 -0.00017505"/>
     <parent link="spherical_wrist_2_link"/>
     <child link="bracelet_link"/>
